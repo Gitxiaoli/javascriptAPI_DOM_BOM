@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .biaodan {
+            position: relative;
+            width: 240px;
+            height: 50px;
+        }
+        
+        input {
+            outline: medium;
+            border: 1px solid #ccc;
+            color: #ccc;
+        }
+        
+        .border-pink {
+            border: 1px solid pink;
+            color: rgb(156, 154, 154);
+        }
+        
+        img {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            width: 24px;
+        }
+        
+        .message {
+            position: absolute;
+            bottom: -9px;
+            right: -114px;
+            padding-left: 16px;
+            font-size: 14px;
+            background: url(images/mess.png) no-repeat;
+        }
+        
+        .wrong {
+            color: red;
+            background: url(./images/wrong.png) no-repeat;
+        }
+        
+        .right {
+            color: lawngreen;
+            background: url(./images/right.png) no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="biaodan">
+        <form action="" method="get">
+
+            账号:<input type="text" name="" value="邮箱/ID/手机号" id="text"> <br/>密码:
+            <input type="password" name="" value="" id="password">
+
+            <p class="message">请输入1~16位的</p>
+        </form>
+    </div>
+    <script>
+        // 文本框
+        var text = document.querySelector('#text');
+        // text.onfocus = function() {
+        //     this.value = '';
+        //     this.className = 'border-pink';
+
+        // }
+        // text.onblur = function() {
+        //         this.value = '邮箱/ID/手机号';
+        //         this.className = '';
+        //     }
+        text.onfocus = function() {
+            if (this.value == '邮箱/ID/手机号') {
+                this.value = '';
+            }
+            this.className = 'border-pink';
+        }
+        text.onblur = function() {
+                if (this.value == '') {
+                    this.value = '邮箱/ID/手机号';
+                }
+                this.className = '';
+            }
+            // 密码框
+        var migs = document.querySelector('img');
+        var password = document.querySelector('#password');
+        var flag = 0;
+        migs.onclick = function() {
+                if (flag == 0) {
+                    password.type = 'text';
+                    migs.src = './images/open.png';
+                    flag = 1;
+                } else {
+                    password.type = 'password';
+                    migs.src = './images/close.png';
+                    flag = 0;
+                }
+            }
+            // 判断是否输入正确
+        var message = document.querySelector('.message');
+        var password = document.querySelector('#password');
+        password.onblur = function() {
+            if (this.value.length < 6 || this.value.length > 16) {
+                // console.log('错误');
+                message.className = 'message wrong';
+                message.innerHTML = '您输入的位数不对要求6~16位';
+            } else {
+                message.className = 'message right';
+                message.innerHTML = '您输入的正确';
+            }
+        }
+    </script>
+</body>
+
+</html>

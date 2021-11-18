@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            position: relative;
+            width: 240px;
+            height: 100px;
+        }
+        
+        #ipt {
+            color: #ccc;
+        }
+        
+        #img1 {
+            position: absolute;
+            top: 22px;
+            right: 32px;
+            width: 24px;
+        }
+        
+        .jingdong img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <form action="" method="get">
+            用户名:<input type="text" value="请输入用户名" name="" id="ipt">
+            </br>
+            密码:<input type="password" name="" id="ipt2">
+            <img src="./images/close.png" alt="" id="img1">
+        </form>
+    </div>
+    <div class="jingdong">
+        <img src="../第一天/images/tao.png" id="img2" alt="">
+        <button id="but1">关闭</button>
+    </div>
+    <div class="nav">
+        <ul>
+            <li>
+                <a href="javascript:;">微博</a>
+            </li>
+            <ul>
+                <li><a href="javascript:;">微博</a></li>
+                <li><a href="javascript:;">微博</a></li>
+                <li><a href="javascript:;">微博</a></li>
+            </ul>
+        </ul>
+    </div>
+    <script>
+        //用户名显示与隐藏文本内容
+        var ipt = document.querySelector('#ipt');
+        ipt.onfocus = function() {
+            if (this.value == '请输入用户名') {
+                this.value = '';
+            }
+            this.style.color = 'pink';
+        }
+        ipt.onblur = function() {
+                if (this.value == '') {
+                    this.value = '请输入用户名';
+                }
+                this.style.color = '#ccc';
+            }
+            //显示密码
+        var ipt2 = document.querySelector('#ipt2');
+        var img1 = document.querySelector('#img1');
+        var flag = 0;
+        img1.onclick = function() {
+                if (flag == 0) {
+                    ipt2.type = 'text';
+                    img1.src = './images/open.png'
+                    flag = 1;
+                } else {
+                    ipt2.type = 'password';
+                    img1.src = './images/close.png';
+                    flag = 0;
+                }
+            }
+            // 关闭广告
+        var but1 = document.querySelector('#but1');
+        var jingdong = document.querySelector('.jingdong');
+        but1.onclick = function() {
+                jingdong.style.display = 'none';
+            }
+            // 下拉菜单栏
+    </script>
+</body>
+
+</html>

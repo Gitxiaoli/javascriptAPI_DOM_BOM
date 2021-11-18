@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        var box = document.querySelector('.box');
+        box.addEventListener('mousedown', function(e) {
+            var x = e.pageX - this.offsetLeft;
+            var y = e.pageY - this.offsetTop;
+            box.addEventListener('mousemove', move);
+
+            function move() {
+                box.style.left = e.pageX - x + 'px';
+                box.style.top = e.pageY - y + 'px';
+                // console.log(e.pageX - x + 'px' + e.pageY - y + 'px');
+            }
+            box.addEventListener('mouseup', function() {
+                box.removeEventListener('mousemove', move);
+            })
+        })
+    </script>
+</body>
+
+</html>
